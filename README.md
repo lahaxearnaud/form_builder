@@ -6,7 +6,9 @@ CodeIgniter form builder with Bootstrap, foundation or PureCss framework
 Initialization
 ==============
 
+```
 $this->load->library('form_builder');
+```
 
 Configuration
 ==============
@@ -19,14 +21,16 @@ Usage
 Configure the form_builder for the current form :
 -----
 
+```
 $this->form_builder->config( array(
     Ui::ACTION => site_url('ctrl/fct'),
 ), false );
-
+```
 
 Configure fields of the form
 -----
 
+```
 $this->form_builder->build(array(
                     array (
                         Ui::TYPE => Ui::TEXT,
@@ -131,16 +135,20 @@ $this->form_builder->build(array(
                         )
                     ),
                 ));
+```
 
 Retreive the HTML of the form :
 -----
 
+```
 echo $this->form_builder 
+```
 
 OR
 
+```
 $html = $this->form_builder->render();
-
+```
 
 Easy isn't it ?!
 
@@ -152,6 +160,7 @@ More usage
 Add a element :
 -----
 
+```
 $this->form_builder->add(array (
                         Ui::TYPE => Ui::TEXT,
                         Ui::NAME => 'champs1',
@@ -159,7 +168,7 @@ $this->form_builder->add(array (
                         Ui::PREFIX => 'HEP',
 
                     ));
-
+```
 
 Get an element :
 -----
@@ -168,6 +177,8 @@ $arrayElement = $this->form_builder->get ( $nameOfField);
 
 Render an element :
 -----
+
+```
 $this->form_builder->renderElement(array (
                         Ui::TYPE => Ui::TEXT,
                         Ui::NAME => 'champs1',
@@ -175,7 +186,7 @@ $this->form_builder->renderElement(array (
                         Ui::PREFIX => 'HEP',
 
                     ));
-
+```
 
 
 Developed by LAHAXE Arnaud
