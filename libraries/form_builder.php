@@ -13,7 +13,7 @@
  * 26 nov. 2013 LAHAXE Arnaud <lahaxe.arnaud@gmail.com>
  *      Initial Version
  */
-class Ui
+class HTML
 {
     const SELECT        = 'dropdown';
     const CHECKBOX      = 'checkbox';
@@ -90,7 +90,7 @@ class Form_builder
     /**
      * @var array form configuration
      *
-     * Ui::Action required
+     * HTML::Action required
      */
     private $formConfig = array ();
 
@@ -116,15 +116,15 @@ class Form_builder
 
         $this->multipart = $multipart;
         $config          = array_merge( array (
-            Ui::CSS_FRAMEWORK => get_instance()->config->item( 'defaultCSSFwk' ),
-            Ui::CLASSES       => ''
+            HTML::CSS_FRAMEWORK => get_instance()->config->item( 'defaultCSSFwk' ),
+            HTML::CLASSES       => ''
         ), $config );
 
         // load css classes
-        $classes       = get_instance()->config->item( Ui::CSS_FRAMEWORK );
-        $this->classes = $classes[ $config[ Ui::CSS_FRAMEWORK ] ];
+        $classes       = get_instance()->config->item( HTML::CSS_FRAMEWORK );
+        $this->classes = $classes[ $config[ HTML::CSS_FRAMEWORK ] ];
 
-        $config [ Ui::CLASSES ] .= $this->classes[ 'form' ];
+        $config [ HTML::CLASSES ] .= $this->classes[ 'form' ];
         $this->formConfig = $config;
     }
 
@@ -140,30 +140,30 @@ class Form_builder
     {
 
         $element = array_merge( array (
-            Ui::NAME    => uniqid( 'name_' ),
-            Ui::ID      => uniqid(),
-            Ui::CLASSES => '',
-            Ui::TITLE   => '',
+            HTML::NAME    => uniqid( 'name_' ),
+            HTML::ID      => uniqid(),
+            HTML::CLASSES => '',
+            HTML::TITLE   => '',
         ), $element );
 
         // set class error
-        if ( isset( $element[ Ui::ERROR ] ) ) {
-            $element[ Ui::CLASSES ] .= ' error ';
+        if ( isset( $element[ HTML::ERROR ] ) ) {
+            $element[ HTML::CLASSES ] .= ' error ';
         }
         
         // add class input if not button or link
-        if ( !in_array( $element[ Ui::TYPE ], array ( Ui::LINK, Ui::SUBMIT ) ) ) {
-            if ( !empty( $this->classes[ 'input' ] ) && strpos( $element[ Ui::CLASSES ], $this->classes[ 'input' ] ) === FALSE ) {
-                $element[ Ui::CLASSES ] .= ' ' . $this->classes[ 'input' ];
+        if ( !in_array( $element[ HTML::TYPE ], array ( HTML::LINK, HTML::SUBMIT ) ) ) {
+            if ( !empty( $this->classes[ 'input' ] ) && strpos( $element[ HTML::CLASSES ], $this->classes[ 'input' ] ) === FALSE ) {
+                $element[ HTML::CLASSES ] .= ' ' . $this->classes[ 'input' ];
             }
             // add btn and btn-default for bootstrap if necessary
-        } elseif ( $this->formConfig[ Ui::CSS_FRAMEWORK ] === Ui::BOOTSTRAP ) {
-            if ( strpos( $element[ Ui::CLASSES ], 'btn' ) === FALSE ) {
-                $element[ Ui::CLASSES ] = 'btn';
+        } elseif ( $this->formConfig[ HTML::CSS_FRAMEWORK ] === HTML::BOOTSTRAP ) {
+            if ( strpos( $element[ HTML::CLASSES ], 'btn' ) === FALSE ) {
+                $element[ HTML::CLASSES ] = 'btn';
             }
 
-            if ( strpos( $element[ Ui::CLASSES ], 'btn-' ) === FALSE ) {
-                $element[ Ui::CLASSES ] .= ' btn-default ';
+            if ( strpos( $element[ HTML::CLASSES ], 'btn-' ) === FALSE ) {
+                $element[ HTML::CLASSES ] .= ' btn-default ';
             }
         }
 
@@ -179,7 +179,7 @@ class Form_builder
     {
         foreach ( $elements as $element ) {
             $element                                = $this->init( $element );
-            $this->elements[ $element[ Ui::NAME ] ] = $element;
+            $this->elements[ $element[ HTML::NAME ] ] = $element;
         }
     }
 
@@ -191,7 +191,7 @@ class Form_builder
     public function add( $element )
     {
         $element                                = $this->init( $element );
-        $this->elements[ $element[ Ui::NAME ] ] = $element;
+        $this->elements[ $element[ HTML::NAME ] ] = $element;
     }
 
     /**
@@ -214,7 +214,7 @@ class Form_builder
     public function renderStart()
     {
 
-        $action = $this->formConfig[ Ui::ACTION ];
+        $action = $this->formConfig[ HTML::ACTION ];
         if ( !$this->multipart ) {
             return form_open( $action, $this->formConfig );
         } else {
@@ -264,31 +264,31 @@ class Form_builder
      */
     private function prepareElement( $html, $element, $type, $wrap )
     {
-        if ( $type !== Ui::HIDDEN ) {
-            if ( strcasecmp( $this->formConfig[ Ui::CSS_FRAMEWORK ], Ui::BOOTSTRAP ) == 0 ) {
+        if ( $type !== HTML::HIDDEN ) {
+            if ( strcasecmp( $this->formConfig[ HTML::CSS_FRAMEWORK ], HTML::BOOTSTRAP ) == 0 ) {
 
-                if ( isset( $element[ Ui::SUFFIX ] ) ) {
-                    $html .= '<span class="input-group-addon">' . $element[ Ui::SUFFIX ] . '</span>';
+                if ( isset( $element[ HTML::SUFFIX ] ) ) {
+                    $html .= '<span class="input-group-addon">' . $element[ HTML::SUFFIX ] . '</span>';
                 }
 
-                if ( isset( $element[ Ui::PREFIX ] ) ) {
-                    $html = '<span class="input-group-addon">' . $element[ Ui::SUFFIX ] . '</span>' . $html;
+                if ( isset( $element[ HTML::PREFIX ] ) ) {
+                    $html = '<span class="input-group-addon">' . $element[ HTML::SUFFIX ] . '</span>' . $html;
                 }
             }
 
             if ( $wrap ) {
-                $html = $this->wrapElement( $html, !isset( $element[ Ui::LABEL ] ) ? $this->classes[ 'offset' ] : '', $element );
+                $html = $this->wrapElement( $html, !isset( $element[ HTML::LABEL ] ) ? $this->classes[ 'offset' ] : '', $element );
             }
 
-            if ( isset( $element[ Ui::LABEL ] ) ) {
+            if ( isset( $element[ HTML::LABEL ] ) ) {
 
                 $label = '';
                 if ( isset( $this->classes[ 'labelWrapper' ] ) ) {
                     $label .= '<div class="' . $this->classes[ 'labelWrapper' ] . '">';
                 }
 
-                $label .= form_label( $element[ Ui::LABEL ], $element[ Ui::ID ], array (
-                    Ui::CLASSES => $this->classes[ 'label' ]
+                $label .= form_label( $element[ HTML::LABEL ], $element[ HTML::ID ], array (
+                    HTML::CLASSES => $this->classes[ 'label' ]
                 ) );
 
                 if ( isset( $this->classes[ 'labelWrapper' ] ) ) {
@@ -319,67 +319,67 @@ class Form_builder
     public function renderElement( $element, $wrap = TRUE )
     {
         $html = '';
-        $type = $element[ Ui::TYPE ];
+        $type = $element[ HTML::TYPE ];
 
-        unset( $element[ Ui::TYPE ] );
+        unset( $element[ HTML::TYPE ] );
 
         switch ( $type ) {
-            case Ui::TEXT:
+            case HTML::TEXT:
                 $html .= form_input( $element );
                 break;
 
-            case Ui::SELECT:
-                if ( !isset( $element[ Ui::SELECTED ] ) ) {
-                    $element[ Ui::SELECTED ] = array ();
+            case HTML::SELECT:
+                if ( !isset( $element[ HTML::SELECTED ] ) ) {
+                    $element[ HTML::SELECTED ] = array ();
                 }
-                $html .= form_dropdown( $element[ Ui::NAME ], $element[ Ui::OPTIONS ], $element[ Ui::SELECTED ], 'class="' . $element[ Ui::CLASSES ] . '"' );
+                $html .= form_dropdown( $element[ HTML::NAME ], $element[ HTML::OPTIONS ], $element[ HTML::SELECTED ], 'class="' . $element[ HTML::CLASSES ] . '"' );
                 break;
 
-            case Ui::HIDDEN:
-                $html .= form_hidden( $element[ Ui::NAME ], $element[ Ui::VALUE ] );
+            case HTML::HIDDEN:
+                $html .= form_hidden( $element[ HTML::NAME ], $element[ HTML::VALUE ] );
                 break;
 
-            case Ui::SUBMIT:
+            case HTML::SUBMIT:
                 $html .= form_submit( $element );
                 break;
 
-            case Ui::TEXTAREA:
+            case HTML::TEXTAREA:
                 $html .= form_textarea( $element );
                 break;
 
-            case Ui::PASSWORD:
+            case HTML::PASSWORD:
                 $html .= form_password( $element );
                 break;
 
-            case Ui::CHECKBOX:
+            case HTML::CHECKBOX:
                 $html .= form_checkbox( $element );
                 break;
 
-            case Ui::FILE:
+            case HTML::FILE:
                 $html .= form_upload( $element );
                 break;
 
-            case Ui::LINK:
-                $html .= '<a class="' . $element[ Ui::CLASSES ] . '" href="' . $element[ Ui::HREF ] . '" title="' . $element[ Ui::TITLE ] . '" id="' . $element[ Ui::ID ] . '">' . $element[ Ui::HTML ] . '</a>';
+            case HTML::LINK:
+                $html .= '<a class="' . $element[ HTML::CLASSES ] . '" href="' . $element[ HTML::HREF ] . '" title="' . $element[ HTML::TITLE ] . '" id="' . $element[ HTML::ID ] . '">' . $element[ HTML::HTML ] . '</a>';
                 break;
 
-            case Ui::COMBINE:
-                foreach ( $element[ Ui::OPTIONS ] as $option ) {
+            case HTML::COMBINE:
+                foreach ( $element[ HTML::OPTIONS ] as $option ) {
                     $option = $this->init( $option );
                     $html .= $this->renderElement( $option, FALSE );
                 }
                 break;
 
-            case Ui::RADIOGROUP:
-                if ( is_array( $element[ Ui::OPTIONS ] ) ) {
-                    foreach ( $element[ Ui::OPTIONS ] as $option ) {
-                        $option[ Ui::NAME ] = $element[ Ui::NAME ] . '[]';
-                        $option[ Ui::TYPE ] = Ui::RADIO;
+            case HTML::RADIOGROUP:
+                if ( is_array( $element[ HTML::OPTIONS ] ) ) {
+                    foreach ( $element[ HTML::OPTIONS ] as $option ) {
+                        $option[ HTML::NAME ] = $element[ HTML::NAME ] . '[]';
+                        $option[ HTML::TYPE ] = HTML::RADIO;
                         $option             = $this->init( $option );
-                        $html .= '<label class="' . $this->classes[ 'radio' ] . '" for="' . $option[ Ui::ID ] . '">';
+                        $html .= '<label class="' . $this->classes[ 'radio' ] . '" for="' . $option[ HTML::ID ] . '">';
                         $html .= form_radio( $option );
-                        if ( isset( $option[ Ui::LABEL ] ) ) {
-                            $html .= ' ' . $option[ Ui::LABEL ] . ' ';
+                        if ( isset( $option[ HTML::LABEL ] ) ) {
+                            $html .= ' ' . $option[ HTML::LABEL ] . ' ';
                         }
                         $html .= '</label>';
                     }
@@ -388,16 +388,16 @@ class Form_builder
                 }
 
                 break;
-            case Ui::CHECKBOXGROUP:
-                if ( is_array( $element[ Ui::OPTIONS ] ) ) {
-                    foreach ( $element[ Ui::OPTIONS ] as $option ) {
-                        $option[ Ui::NAME ] = $element[ Ui::NAME ] . '[]';
-                        $option[ Ui::TYPE ] = Ui::CHECKBOX;
+            case HTML::CHECKBOXGROUP:
+                if ( is_array( $element[ HTML::OPTIONS ] ) ) {
+                    foreach ( $element[ HTML::OPTIONS ] as $option ) {
+                        $option[ HTML::NAME ] = $element[ HTML::NAME ] . '[]';
+                        $option[ HTML::TYPE ] = HTML::CHECKBOX;
                         $option             = $this->init( $option );
-                        $html .= '<label  class="' . $this->classes[ 'checkbox' ] . '" for="' . $option[ Ui::ID ] . '">';
+                        $html .= '<label  class="' . $this->classes[ 'checkbox' ] . '" for="' . $option[ HTML::ID ] . '">';
                         $html .= form_checkbox( $option );
-                        if ( isset( $option[ Ui::LABEL ] ) ) {
-                            $html .= ' ' . $option[ Ui::LABEL ] . ' ';
+                        if ( isset( $option[ HTML::LABEL ] ) ) {
+                            $html .= ' ' . $option[ HTML::LABEL ] . ' ';
                         }
                         $html .= '</label>';
                     }
@@ -428,8 +428,8 @@ class Form_builder
     public function wrapElement( $htmlElement, $classes = '', $element = array () )
     {
         $help = '';
-        if ( isset( $element[ Ui::HELP ] ) ) {
-            $help = '<div class="' . $this->classes[ 'help' ] . '">' . $element[ Ui::HELP ] . '</div>';
+        if ( isset( $element[ HTML::HELP ] ) ) {
+            $help = '<div class="' . $this->classes[ 'help' ] . '">' . $element[ HTML::HELP ] . '</div>';
         }
 
         return '<div class="' . $this->classes[ 'inputWrapper' ] . ' ' . $classes . '">' . $htmlElement . $help . '</div>';

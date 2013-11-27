@@ -23,7 +23,7 @@ Configure the form_builder for the current form :
 
 ```
 $this->form_builder->config( array(
-    Ui::ACTION => site_url('ctrl/fct'),
+    HTML::ACTION => site_url('ctrl/fct'),
 ), false );
 ```
 
@@ -33,104 +33,104 @@ Configure fields of the form
 ```
 $this->form_builder->build(array(
                     array (
-                        Ui::TYPE => Ui::TEXT,
-                        Ui::NAME => 'champs1',
-                        Ui::LABEL => 'CHAMPS 1',
-                        Ui::PREFIX => 'HEP',
+                        HTML::TYPE => HTML::TEXT,
+                        HTML::NAME => 'champs1',
+                        HTML::LABEL => 'CHAMPS 1',
+                        HTML::PREFIX => 'HEP',
 
                     ),
 
                     array (
-                        Ui::TYPE => Ui::SELECT,
-                        Ui::LABEL => "SELECT",
-                        Ui::NAME => 'champs2',
-                        Ui::OPTIONS => array(
+                        HTML::TYPE => HTML::SELECT,
+                        HTML::LABEL => "SELECT",
+                        HTML::NAME => 'champs2',
+                        HTML::OPTIONS => array(
                             1 => 'UN',
                             2 => 'DEUX'
                         ),
-                        UI::HELP => 'i am an help'
+                        HTML::HELP => 'i am an help'
                     ),
 
                     array (
-                        Ui::TYPE => Ui::PASSWORD,
-                        Ui::NAME => 'pass',
-                        Ui::LABEL => 'CHAMPS 2',
-                        Ui::SUFFIX => 'HOP',
+                        HTML::TYPE => HTML::PASSWORD,
+                        HTML::NAME => 'pass',
+                        HTML::LABEL => 'CHAMPS 2',
+                        HTML::SUFFIX => 'HOP',
 
                     ),
 
                     array(
-                        Ui::TYPE => Ui::RADIOGROUP,
-                        Ui::NAME => 'RADIO',
-                        Ui::LABEL => 'MES RADIOS',
-                        Ui::OPTIONS => array(
+                        HTML::TYPE => HTML::RADIOGROUP,
+                        HTML::NAME => 'RADIO',
+                        HTML::LABEL => 'MES RADIOS',
+                        HTML::OPTIONS => array(
                             array(
-                                Ui::VALUE => '1',
-                                Ui::LABEL => '1'
+                                HTML::VALUE => '1',
+                                HTML::LABEL => '1'
                             ),
                             array(
-                                Ui::VALUE => '2',
-                                Ui::LABEL => '2'
+                                HTML::VALUE => '2',
+                                HTML::LABEL => '2'
                             ),
                             array(
-                                Ui::VALUE => '3',
-                                Ui::LABEL => '3'
+                                HTML::VALUE => '3',
+                                HTML::LABEL => '3'
                             ),
                         )
                     ),
 
                     array(
-                        Ui::TYPE => Ui::CHECKBOXGROUP,
-                        Ui::NAME => 'CHECKBOX',
-                        Ui::LABEL => 'MES CHECKBOX',
-                        Ui::OPTIONS => array(
+                        HTML::TYPE => HTML::CHECKBOXGROUP,
+                        HTML::NAME => 'CHECKBOX',
+                        HTML::LABEL => 'MES CHECKBOX',
+                        HTML::OPTIONS => array(
                             array(
-                                Ui::VALUE => '1',
-                                Ui::LABEL => '1'
+                                HTML::VALUE => '1',
+                                HTML::LABEL => '1'
                             ),
                             array(
-                                Ui::VALUE => '2',
-                                Ui::LABEL => '2'
+                                HTML::VALUE => '2',
+                                HTML::LABEL => '2'
                             ),
                             array(
-                                Ui::VALUE => '3',
-                                Ui::LABEL => '3'
+                                HTML::VALUE => '3',
+                                HTML::LABEL => '3'
                             ),
                         )
                     ),
 
                     array (
-                        Ui::TYPE => Ui::TEXTAREA,
-                        Ui::NAME => 'champs11',
-                        Ui::LABEL => 'CHAMPS 1'
+                        HTML::TYPE => HTML::TEXTAREA,
+                        HTML::NAME => 'champs11',
+                        HTML::LABEL => 'CHAMPS 1'
                     ),
 
                     array (
-                        Ui::TYPE => Ui::FILE,
-                        Ui::NAME => 'champs12',
-                        Ui::LABEL => 'CHAMPS 1'
+                        HTML::TYPE => HTML::FILE,
+                        HTML::NAME => 'champs12',
+                        HTML::LABEL => 'CHAMPS 1'
                     ),
 
                     array (
-                        Ui::TYPE => Ui::HIDDEN,
-                        Ui::NAME => 'champs13',
-                        UI::VALUE => 'HEY'
+                        HTML::TYPE => HTML::HIDDEN,
+                        HTML::NAME => 'champs13',
+                        HTML::VALUE => 'HEY'
                     ),
 
                     array (
-                        Ui::TYPE => Ui::COMBINE,
-                        UI::OPTIONS => array(
+                        HTML::TYPE => HTML::COMBINE,
+                        HTML::OPTIONS => array(
                             array(
-                                Ui::TYPE => Ui::SUBMIT,
-                                Ui::NAME => 'champs14',
-                                UI::VALUE => 'Envoyer'
+                                HTML::TYPE => HTML::SUBMIT,
+                                HTML::NAME => 'champs14',
+                                HTML::VALUE => 'Envoyer'
                             ),
 
                             array(
-                                Ui::TYPE => Ui::LINK,
-                                Ui::HTML => 'champs15',
-                                UI::HREF => '#',
-                                Ui::CLASSES => 'btn btn-warning'
+                                HTML::TYPE => HTML::LINK,
+                                HTML::HTML => 'champs15',
+                                HTML::HREF => '#',
+                                HTML::CLASSES => 'btn btn-warning'
                             ),
                         )
                     ),
@@ -162,10 +162,10 @@ Add a element :
 
 ```
 $this->form_builder->add(array (
-                        Ui::TYPE => Ui::TEXT,
-                        Ui::NAME => 'champs1',
-                        Ui::LABEL => 'CHAMPS 1',
-                        Ui::PREFIX => 'HEP',
+                        HTML::TYPE => HTML::TEXT,
+                        HTML::NAME => 'champs1',
+                        HTML::LABEL => 'CHAMPS 1',
+                        HTML::PREFIX => 'HEP',
 
                     ));
 ```
@@ -180,10 +180,10 @@ Render an element :
 
 ```
 $this->form_builder->renderElement(array (
-                        Ui::TYPE => Ui::TEXT,
-                        Ui::NAME => 'champs1',
-                        Ui::LABEL => 'CHAMPS 1',
-                        Ui::PREFIX => 'HEP',
+                        HTML::TYPE => HTML::TEXT,
+                        HTML::NAME => 'champs1',
+                        HTML::LABEL => 'CHAMPS 1',
+                        HTML::PREFIX => 'HEP',
 
                     ));
 ```
