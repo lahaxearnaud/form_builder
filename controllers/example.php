@@ -35,7 +35,7 @@
                             1 => 'UN',
                             2 => 'DEUX'
                         ),
-                        UI::HELP => 'Je suis une aide à la con'
+                        UI::HELP => 'i am an help'
                     ),
 
                     array (
