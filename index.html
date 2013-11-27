@@ -54,7 +54,7 @@
 <a name="configure-the-form_builder-for-the-current-form-" class="anchor" href="#configure-the-form_builder-for-the-current-form-"><span class="octicon octicon-link"></span></a>Configure the form_builder for the current form :</h2>
 
 <pre><code>$this-&gt;form_builder-&gt;config( array(
-    Ui::ACTION =&gt; site_url('ctrl/fct'),
+    HTML::ACTION =&gt; site_url('ctrl/fct'),
 ), false );
 </code></pre>
 
@@ -63,104 +63,104 @@
 
 <pre><code>$this-&gt;form_builder-&gt;build(array(
                     array (
-                        Ui::TYPE =&gt; Ui::TEXT,
-                        Ui::NAME =&gt; 'champs1',
-                        Ui::LABEL =&gt; 'CHAMPS 1',
-                        Ui::PREFIX =&gt; 'HEP',
+                        HTML::TYPE =&gt; HTML::TEXT,
+                        HTML::NAME =&gt; 'champs1',
+                        HTML::LABEL =&gt; 'CHAMPS 1',
+                        HTML::PREFIX =&gt; 'HEP',
 
                     ),
 
                     array (
-                        Ui::TYPE =&gt; Ui::SELECT,
-                        Ui::LABEL =&gt; "SELECT",
-                        Ui::NAME =&gt; 'champs2',
-                        Ui::OPTIONS =&gt; array(
+                        HTML::TYPE =&gt; HTML::SELECT,
+                        HTML::LABEL =&gt; "SELECT",
+                        HTML::NAME =&gt; 'champs2',
+                        HTML::OPTIONS =&gt; array(
                             1 =&gt; 'UN',
                             2 =&gt; 'DEUX'
                         ),
-                        UI::HELP =&gt; 'I am an help'
+                        HTML::HELP =&gt; 'I am an help'
                     ),
 
                     array (
-                        Ui::TYPE =&gt; Ui::PASSWORD,
-                        Ui::NAME =&gt; 'pass',
-                        Ui::LABEL =&gt; 'CHAMPS 2',
-                        Ui::SUFFIX =&gt; 'HOP',
+                        HTML::TYPE =&gt; HTML::PASSWORD,
+                        HTML::NAME =&gt; 'pass',
+                        HTML::LABEL =&gt; 'CHAMPS 2',
+                        HTML::SUFFIX =&gt; 'HOP',
 
                     ),
 
                     array(
-                        Ui::TYPE =&gt; Ui::RADIOGROUP,
-                        Ui::NAME =&gt; 'RADIO',
-                        Ui::LABEL =&gt; 'MES RADIOS',
-                        Ui::OPTIONS =&gt; array(
+                        HTML::TYPE =&gt; HTML::RADIOGROUP,
+                        HTML::NAME =&gt; 'RADIO',
+                        HTML::LABEL =&gt; 'MES RADIOS',
+                        HTML::OPTIONS =&gt; array(
                             array(
-                                Ui::VALUE =&gt; '1',
-                                Ui::LABEL =&gt; '1'
+                                HTML::VALUE =&gt; '1',
+                                HTML::LABEL =&gt; '1'
                             ),
                             array(
-                                Ui::VALUE =&gt; '2',
-                                Ui::LABEL =&gt; '2'
+                                HTML::VALUE =&gt; '2',
+                                HTML::LABEL =&gt; '2'
                             ),
                             array(
-                                Ui::VALUE =&gt; '3',
-                                Ui::LABEL =&gt; '3'
+                                HTML::VALUE =&gt; '3',
+                                HTML::LABEL =&gt; '3'
                             ),
                         )
                     ),
 
                     array(
-                        Ui::TYPE =&gt; Ui::CHECKBOXGROUP,
-                        Ui::NAME =&gt; 'CHECKBOX',
-                        Ui::LABEL =&gt; 'MES CHECKBOX',
-                        Ui::OPTIONS =&gt; array(
+                        HTML::TYPE =&gt; HTML::CHECKBOXGROUP,
+                        HTML::NAME =&gt; 'CHECKBOX',
+                        HTML::LABEL =&gt; 'MES CHECKBOX',
+                        HTML::OPTIONS =&gt; array(
                             array(
-                                Ui::VALUE =&gt; '1',
-                                Ui::LABEL =&gt; '1'
+                                HTML::VALUE =&gt; '1',
+                                HTML::LABEL =&gt; '1'
                             ),
                             array(
-                                Ui::VALUE =&gt; '2',
-                                Ui::LABEL =&gt; '2'
+                                HTML::VALUE =&gt; '2',
+                                HTML::LABEL =&gt; '2'
                             ),
                             array(
-                                Ui::VALUE =&gt; '3',
-                                Ui::LABEL =&gt; '3'
+                                HTML::VALUE =&gt; '3',
+                                HTML::LABEL =&gt; '3'
                             ),
                         )
                     ),
 
                     array (
-                        Ui::TYPE =&gt; Ui::TEXTAREA,
-                        Ui::NAME =&gt; 'champs11',
-                        Ui::LABEL =&gt; 'CHAMPS 1'
+                        HTML::TYPE =&gt; HTML::TEXTAREA,
+                        HTML::NAME =&gt; 'champs11',
+                        HTML::LABEL =&gt; 'CHAMPS 1'
                     ),
 
                     array (
-                        Ui::TYPE =&gt; Ui::FILE,
-                        Ui::NAME =&gt; 'champs12',
-                        Ui::LABEL =&gt; 'CHAMPS 1'
+                        HTML::TYPE =&gt; HTML::FILE,
+                        HTML::NAME =&gt; 'champs12',
+                        HTML::LABEL =&gt; 'CHAMPS 1'
                     ),
 
                     array (
-                        Ui::TYPE =&gt; Ui::HIDDEN,
-                        Ui::NAME =&gt; 'champs13',
-                        UI::VALUE =&gt; 'HEY'
+                        HTML::TYPE =&gt; HTML::HIDDEN,
+                        HTML::NAME =&gt; 'champs13',
+                        HTML::VALUE =&gt; 'HEY'
                     ),
 
                     array (
-                        Ui::TYPE =&gt; Ui::COMBINE,
-                        UI::OPTIONS =&gt; array(
+                        HTML::TYPE =&gt; HTML::COMBINE,
+                        HTML::OPTIONS =&gt; array(
                             array(
-                                Ui::TYPE =&gt; Ui::SUBMIT,
-                                Ui::NAME =&gt; 'champs14',
-                                UI::VALUE =&gt; 'Envoyer'
+                                HTML::TYPE =&gt; HTML::SUBMIT,
+                                HTML::NAME =&gt; 'champs14',
+                                HTML::VALUE =&gt; 'Envoyer'
                             ),
 
                             array(
-                                Ui::TYPE =&gt; Ui::LINK,
-                                Ui::HTML =&gt; 'champs15',
-                                UI::HREF =&gt; '#',
-                                Ui::CLASSES =&gt; 'btn btn-warning'
+                                HTML::TYPE =&gt; HTML::LINK,
+                                HTML::HTML =&gt; 'champs15',
+                                HTML::HREF =&gt; '#',
+                                HTML::CLASSES =&gt; 'btn btn-warning'
                             ),
                         )
                     ),
@@ -192,10 +192,10 @@
 <a name="add-a-element-" class="anchor" href="#add-a-element-"><span class="octicon octicon-link"></span></a>Add a element :</h2>
 
 <pre><code>$this-&gt;form_builder-&gt;add(array (
-                        Ui::TYPE =&gt; Ui::TEXT,
-                        Ui::NAME =&gt; 'champs1',
-                        Ui::LABEL =&gt; 'CHAMPS 1',
-                        Ui::PREFIX =&gt; 'HEP',
+                        HTML::TYPE =&gt; HTML::TEXT,
+                        HTML::NAME =&gt; 'champs1',
+                        HTML::LABEL =&gt; 'CHAMPS 1',
+                        HTML::PREFIX =&gt; 'HEP',
 
                     ));
 </code></pre>
@@ -209,10 +209,10 @@
 <a name="render-an-element-" class="anchor" href="#render-an-element-"><span class="octicon octicon-link"></span></a>Render an element :</h2>
 
 <pre><code>$this-&gt;form_builder-&gt;renderElement(array (
-                        Ui::TYPE =&gt; Ui::TEXT,
-                        Ui::NAME =&gt; 'champs1',
-                        Ui::LABEL =&gt; 'CHAMPS 1',
-                        Ui::PREFIX =&gt; 'HEP',
+                        HTML::TYPE =&gt; HTML::TEXT,
+                        HTML::NAME =&gt; 'champs1',
+                        HTML::LABEL =&gt; 'CHAMPS 1',
+                        HTML::PREFIX =&gt; 'HEP',
 
                     ));
 </code></pre>
