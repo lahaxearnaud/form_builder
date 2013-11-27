@@ -19,6 +19,7 @@ class Ui
     const CHECKBOX      = 'checkbox';
     const CHECKBOXGROUP = 'checkboxGroup';
     const RADIOGROUP    = 'radioGroup';
+    const RADIO         = 'radio';
     const TEXT          = 'text';
     const HIDDEN        = 'hidden';
     const PASSWORD      = 'password';
@@ -142,18 +143,18 @@ class Form_builder
             Ui::NAME    => uniqid( 'name_' ),
             Ui::ID      => uniqid(),
             Ui::CLASSES => '',
-            Ui::TITLE   => ''
+            Ui::TITLE   => '',
         ), $element );
 
         // set class error
         if ( isset( $element[ Ui::ERROR ] ) ) {
             $element[ Ui::CLASSES ] .= ' error ';
         }
-
+        
         // add class input if not button or link
-        if ( !in_array( Ui::TYPE, array ( Ui::LINK, Ui::SUBMIT ) ) ) {
+        if ( !in_array( $element[ Ui::TYPE ], array ( Ui::LINK, Ui::SUBMIT ) ) ) {
             if ( !empty( $this->classes[ 'input' ] ) && strpos( $element[ Ui::CLASSES ], $this->classes[ 'input' ] ) === FALSE ) {
-                $element[ Ui::CLASSES ] .= $this->classes[ 'input' ];
+                $element[ Ui::CLASSES ] .= ' ' . $this->classes[ 'input' ];
             }
             // add btn and btn-default for bootstrap if necessary
         } elseif ( $this->formConfig[ Ui::CSS_FRAMEWORK ] === Ui::BOOTSTRAP ) {
@@ -162,7 +163,7 @@ class Form_builder
             }
 
             if ( strpos( $element[ Ui::CLASSES ], 'btn-' ) === FALSE ) {
-                $element[ Ui::CLASSES ] .= ' btn-default';
+                $element[ Ui::CLASSES ] .= ' btn-default ';
             }
         }
 
@@ -373,6 +374,7 @@ class Form_builder
                 if ( is_array( $element[ Ui::OPTIONS ] ) ) {
                     foreach ( $element[ Ui::OPTIONS ] as $option ) {
                         $option[ Ui::NAME ] = $element[ Ui::NAME ] . '[]';
+                        $option[ Ui::TYPE ] = Ui::RADIO;
                         $option             = $this->init( $option );
                         $html .= '<label class="' . $this->classes[ 'radio' ] . '" for="' . $option[ Ui::ID ] . '">';
                         $html .= form_radio( $option );
@@ -390,6 +392,7 @@ class Form_builder
                 if ( is_array( $element[ Ui::OPTIONS ] ) ) {
                     foreach ( $element[ Ui::OPTIONS ] as $option ) {
                         $option[ Ui::NAME ] = $element[ Ui::NAME ] . '[]';
+                        $option[ Ui::TYPE ] = Ui::CHECKBOX;
                         $option             = $this->init( $option );
                         $html .= '<label  class="' . $this->classes[ 'checkbox' ] . '" for="' . $option[ Ui::ID ] . '">';
                         $html .= form_checkbox( $option );
