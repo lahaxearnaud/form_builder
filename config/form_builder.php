@@ -1,5 +1,7 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+$config['formConfigPath'] = 'config/form/'
+
 $config['defaultCSSFwk'] = 'bootstrap';
 
 $config['css_framework']['bootstrap'] = array(
