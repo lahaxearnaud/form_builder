@@ -272,7 +272,7 @@ class Form_builder
                 }
 
                 if ( isset( $element[ HTML::PREFIX ] ) ) {
-                    $html = '<span class="input-group-addon">' . $element[ HTML::SUFFIX ] . '</span>' . $html;
+                    $html = '<span class="input-group-addon">' . $element[ HTML::PREFIX ] . '</span>' . $html;
                 }
             }
 
